@@ -1,0 +1,6 @@
+{
+  "name": "nist-csf",
+  "description": "NIST CSF 2.0 self-assessment: 33 questions across all six functions, CSF Tier scoring, radar-chart report, prioritized mitigations, and getting-help resources for government agencies.",
+  "version": "1.0.0",
+  "author": { "name": "Heath Ward" }
+}

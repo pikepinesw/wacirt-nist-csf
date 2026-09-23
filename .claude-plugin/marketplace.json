@@ -1,0 +1,17 @@
+{
+  "name": "csf-plugins",
+  "owner": { "name": "Heath Ward", "url": "https://github.com/HEATH-GITHUB-USERNAME" },
+  "metadata": {
+    "description": "Cybersecurity assessment skills for state and local government IT/security teams",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "wacirt-nist-csf",
+      "source": "./plugins/nist-csf",
+      "description": "Interactive NIST CSF 2.0 self-assessment producing a scored report with radar chart, mitigations, and where to get help (WaTech, WA CIRT, MS-ISAC).",
+      "category": "security",
+      "tags": ["nist", "csf", "assessment", "government", "security"]
+    }
+  ]
+}

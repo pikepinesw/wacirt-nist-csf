@@ -1,0 +1,207 @@
+<!doctype html><html lang='en'><head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Cybersecurity Self-Assessment Report — {{ORG}}</title>
+<style>
+:root { --ink:#2b2924; --muted:#6f6a5d; --line:#e4e0d4; --paper:#faf8f2; --card:#ffffff; --accent:#2f6f8f; }
+* { box-sizing:border-box; }
+body { margin:0; font-family:Georgia,'Times New Roman',serif; color:var(--ink); background:var(--paper); line-height:1.55; }
+.wrap { max-width:880px; margin:0 auto; padding:32px 22px 60px; }
+header.rep { background:#232019; color:#f4f1e8; padding:34px 22px; }
+header.rep .wrap { padding:0; }
+header.rep h1 { margin:0 0 6px; font-size:30px; letter-spacing:.3px; }
+header.rep .sub { color:#c9c3b2; font-size:14px; }
+header.rep .meta { margin-top:16px; display:flex; flex-wrap:wrap; gap:6px 26px; font-size:14px; }
+header.rep .meta b { color:#fff; }
+h2 { font-size:21px; margin:38px 0 12px; border-bottom:2px solid var(--line); padding-bottom:6px; }
+h3 { font-size:16px; margin:20px 0 8px; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:18px 20px; }
+.snapshot { display:flex; flex-wrap:wrap; gap:20px; align-items:center; }
+.snapshot .overall { text-align:center; min-width:190px; flex:1; }
+.overall .num { font-size:52px; font-weight:700; line-height:1; }
+.overall .lbl { font-size:15px; font-weight:700; margin-top:6px; }
+.overall .of { color:var(--muted); font-size:13px; }
+.radarbox { flex:2; min-width:300px; text-align:center; }
+table { border-collapse:collapse; width:100%; font-size:14.5px; background:var(--card); }
+th,td { border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top; }
+th { background:#efece1; font-size:13px; text-transform:uppercase; letter-spacing:.4px; }
+td.score { font-weight:700; white-space:nowrap; }
+.bar { height:9px; border-radius:5px; background:#eceadf; overflow:hidden; margin-top:5px; min-width:110px; }
+.bar i { display:block; height:100%; }
+.pill { display:inline-block; padding:1px 9px; border-radius:999px; color:#fff; font-size:12px; font-weight:700; }
+.qid { color:var(--muted); font-size:12.5px; }
+.note { color:var(--muted); font-size:13px; font-style:italic; }
+ol.mit { padding-left:22px; } ol.mit li { margin:10px 0; }
+.mit .why { color:var(--muted); font-size:13px; }
+.helpblock { margin:14px 0; }
+.helpblock ul { margin:6px 0 0; padding-left:20px; }
+.flag { background:#fdf3e2; border:1px solid #eedab2; border-radius:8px; padding:10px 14px; font-size:14px; }
+footer { margin-top:44px; color:var(--muted); font-size:12.5px; border-top:1px solid var(--line); padding-top:14px; }
+@media print { header.rep { -webkit-print-color-adjust:exact; print-color-adjust:exact; } .card { break-inside:avoid; } h2 { break-after:avoid; } }
+</style></head><body>
+<header class='rep'><div class='wrap'>
+<h1>Cybersecurity Self-Assessment Report</h1>
+<div class='sub'>Based on the NIST Cybersecurity Framework (CSF) 2.0 · Condensed 33-question profile · Scored on CSF Tiers 1–4</div>
+<div class='meta'>
+<span><b>Organization:</b> {{ORG}}</span>
+<span><b>Scope:</b> {{SCOPE}}</span>
+<span><b>Assessor:</b> {{ASSESSOR}}</span>
+<span><b>Date:</b> {{DATE}}</span>
+</div></div></header><div class='wrap'>
+<!-- PARTIAL FLAG: delete this whole <p> if every question was answered; otherwise fill in the counts and IDs. -->
+<p class='flag'><b>Partial assessment:</b> {{N_UNANSWERED}} of 33 questions were not answered ({{UNANSWERED_IDS}}). Scores reflect answered questions only.</p>
+<h2>At a glance</h2><div class='card snapshot'>
+<div class='overall'>
+<div class='num' style='color:{{OVERALL_COLOR}}'>{{OVERALL_SCORE}}</div>
+<div class='of'>overall score (of 4.0)</div>
+<div class='lbl' style='color:{{OVERALL_COLOR}}'>{{OVERALL_LABEL}}</div>
+</div>
+<div class='radarbox'><svg viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Radar chart of CSF function scores" style="max-width:560px;width:100%;height:auto"><polygon points="280.0,229.5 323.7,254.8 323.7,305.2 280.0,330.5 236.3,305.2 236.3,254.8" fill="none" stroke="#d8d4c8" stroke-width="1"/><text x="286" y="226" font-size="11" fill="#9a9484">1</text><polygon points="280.0,179.0 367.5,229.5 367.5,330.5 280.0,381.0 192.5,330.5 192.5,229.5" fill="none" stroke="#d8d4c8" stroke-width="1"/><text x="286" y="175" font-size="11" fill="#9a9484">2</text><polygon points="280.0,128.5 411.2,204.2 411.2,355.8 280.0,431.5 148.8,355.8 148.8,204.2" fill="none" stroke="#d8d4c8" stroke-width="1"/><text x="286" y="124" font-size="11" fill="#9a9484">3</text><polygon points="280.0,78.0 454.9,179.0 454.9,381.0 280.0,482.0 105.1,381.0 105.1,179.0" fill="none" stroke="#d8d4c8" stroke-width="1"/><text x="286" y="74" font-size="11" fill="#9a9484">4</text><line x1="280" y1="280" x2="280.0" y2="78.0" stroke="#d8d4c8" stroke-width="1"/><text x="280.0" y="38.0" text-anchor="middle" font-size="14" font-weight="700" fill="#3a372f">GOVERN</text><text x="280.0" y="55.0" text-anchor="middle" font-size="13" fill="{{GOVERN_COLOR}}" font-weight="700">{{GOVERN_SCORE}}</text><line x1="280" y1="280" x2="454.9" y2="179.0" stroke="#d8d4c8" stroke-width="1"/><text x="489.6" y="159.0" text-anchor="start" font-size="14" font-weight="700" fill="#3a372f">IDENTIFY</text><text x="489.6" y="176.0" text-anchor="start" font-size="13" fill="{{IDENTIFY_COLOR}}" font-weight="700">{{IDENTIFY_SCORE}}</text><line x1="280" y1="280" x2="454.9" y2="381.0" stroke="#d8d4c8" stroke-width="1"/><text x="489.6" y="401.0" text-anchor="start" font-size="14" font-weight="700" fill="#3a372f">PROTECT</text><text x="489.6" y="418.0" text-anchor="start" font-size="13" fill="{{PROTECT_COLOR}}" font-weight="700">{{PROTECT_SCORE}}</text><line x1="280" y1="280" x2="280.0" y2="482.0" stroke="#d8d4c8" stroke-width="1"/><text x="280.0" y="522.0" text-anchor="middle" font-size="14" font-weight="700" fill="#3a372f">DETECT</text><text x="280.0" y="539.0" text-anchor="middle" font-size="13" fill="{{DETECT_COLOR}}" font-weight="700">{{DETECT_SCORE}}</text><line x1="280" y1="280" x2="105.1" y2="381.0" stroke="#d8d4c8" stroke-width="1"/><text x="70.4" y="401.0" text-anchor="end" font-size="14" font-weight="700" fill="#3a372f">RESPOND</text><text x="70.4" y="418.0" text-anchor="end" font-size="13" fill="{{RESPOND_COLOR}}" font-weight="700">{{RESPOND_SCORE}}</text><line x1="280" y1="280" x2="105.1" y2="179.0" stroke="#d8d4c8" stroke-width="1"/><text x="70.4" y="159.0" text-anchor="end" font-size="14" font-weight="700" fill="#3a372f">RECOVER</text><text x="70.4" y="176.0" text-anchor="end" font-size="13" fill="{{RECOVER_COLOR}}" font-weight="700">{{RECOVER_SCORE}}</text><polygon points="{{GOVERN_X}},{{GOVERN_Y}} {{IDENTIFY_X}},{{IDENTIFY_Y}} {{PROTECT_X}},{{PROTECT_Y}} {{DETECT_X}},{{DETECT_Y}} {{RESPOND_X}},{{RESPOND_Y}} {{RECOVER_X}},{{RECOVER_Y}}" fill="#2f6f8f" fill-opacity="0.22" stroke="#2f6f8f" stroke-width="2.5"/><circle cx="{{GOVERN_X}}" cy="{{GOVERN_Y}}" r="4.5" fill="#2f6f8f"/><circle cx="{{IDENTIFY_X}}" cy="{{IDENTIFY_Y}}" r="4.5" fill="#2f6f8f"/><circle cx="{{PROTECT_X}}" cy="{{PROTECT_Y}}" r="4.5" fill="#2f6f8f"/><circle cx="{{DETECT_X}}" cy="{{DETECT_Y}}" r="4.5" fill="#2f6f8f"/><circle cx="{{RESPOND_X}}" cy="{{RESPOND_Y}}" r="4.5" fill="#2f6f8f"/><circle cx="{{RECOVER_X}}" cy="{{RECOVER_Y}}" r="4.5" fill="#2f6f8f"/></svg></div></div>
+<h2>Section scores</h2>
+<table><tr><th style='width:22%'>Function</th><th>Category</th><th style='width:26%'>Score</th></tr>
+<tr>
+<td rowspan='6'><b>GOVERN</b><br><span class='pill' style='background:{{GOVERN_COLOR}}'>{{GOVERN_SCORE}}</span> <span class='qid'>{{GOVERN_LABEL}}</span></td>
+<td>Organizational Context <span class='qid'>(GV.OC)</span><div class='bar'><i style='width:{{GV_OC_PCT}};background:{{GV_OC_COLOR}}'></i></div></td>
+<td class='score' style='color:{{GV_OC_COLOR}}'>{{GV_OC_SCORE}}</td></tr>
+<tr>
+<td>Oversight <span class='qid'>(GV.OV)</span><div class='bar'><i style='width:{{GV_OV_PCT}};background:{{GV_OV_COLOR}}'></i></div></td>
+<td class='score' style='color:{{GV_OV_COLOR}}'>{{GV_OV_SCORE}}</td></tr>
+<tr>
+<td>Policy <span class='qid'>(GV.PO)</span><div class='bar'><i style='width:{{GV_PO_PCT}};background:{{GV_PO_COLOR}}'></i></div></td>
+<td class='score' style='color:{{GV_PO_COLOR}}'>{{GV_PO_SCORE}}</td></tr>
+<tr>
+<td>Risk Management Strategy <span class='qid'>(GV.RM)</span><div class='bar'><i style='width:{{GV_RM_PCT}};background:{{GV_RM_COLOR}}'></i></div></td>
+<td class='score' style='color:{{GV_RM_COLOR}}'>{{GV_RM_SCORE}}</td></tr>
+<tr>
+<td>Roles &amp; Responsibilities <span class='qid'>(GV.RR)</span><div class='bar'><i style='width:{{GV_RR_PCT}};background:{{GV_RR_COLOR}}'></i></div></td>
+<td class='score' style='color:{{GV_RR_COLOR}}'>{{GV_RR_SCORE}}</td></tr>
+<tr>
+<td>Supply Chain Risk <span class='qid'>(GV.SC)</span><div class='bar'><i style='width:{{GV_SC_PCT}};background:{{GV_SC_COLOR}}'></i></div></td>
+<td class='score' style='color:{{GV_SC_COLOR}}'>{{GV_SC_SCORE}}</td></tr>
+<tr>
+<td rowspan='3'><b>IDENTIFY</b><br><span class='pill' style='background:{{IDENTIFY_COLOR}}'>{{IDENTIFY_SCORE}}</span> <span class='qid'>{{IDENTIFY_LABEL}}</span></td>
+<td>Asset Management <span class='qid'>(ID.AM)</span><div class='bar'><i style='width:{{ID_AM_PCT}};background:{{ID_AM_COLOR}}'></i></div></td>
+<td class='score' style='color:{{ID_AM_COLOR}}'>{{ID_AM_SCORE}}</td></tr>
+<tr>
+<td>Improvement <span class='qid'>(ID.IM)</span><div class='bar'><i style='width:{{ID_IM_PCT}};background:{{ID_IM_COLOR}}'></i></div></td>
+<td class='score' style='color:{{ID_IM_COLOR}}'>{{ID_IM_SCORE}}</td></tr>
+<tr>
+<td>Risk Assessment <span class='qid'>(ID.RA)</span><div class='bar'><i style='width:{{ID_RA_PCT}};background:{{ID_RA_COLOR}}'></i></div></td>
+<td class='score' style='color:{{ID_RA_COLOR}}'>{{ID_RA_SCORE}}</td></tr>
+<tr>
+<td rowspan='5'><b>PROTECT</b><br><span class='pill' style='background:{{PROTECT_COLOR}}'>{{PROTECT_SCORE}}</span> <span class='qid'>{{PROTECT_LABEL}}</span></td>
+<td>Identity &amp; Access <span class='qid'>(PR.AA)</span><div class='bar'><i style='width:{{PR_AA_PCT}};background:{{PR_AA_COLOR}}'></i></div></td>
+<td class='score' style='color:{{PR_AA_COLOR}}'>{{PR_AA_SCORE}}</td></tr>
+<tr>
+<td>Awareness &amp; Training <span class='qid'>(PR.AT)</span><div class='bar'><i style='width:{{PR_AT_PCT}};background:{{PR_AT_COLOR}}'></i></div></td>
+<td class='score' style='color:{{PR_AT_COLOR}}'>{{PR_AT_SCORE}}</td></tr>
+<tr>
+<td>Data Security <span class='qid'>(PR.DS)</span><div class='bar'><i style='width:{{PR_DS_PCT}};background:{{PR_DS_COLOR}}'></i></div></td>
+<td class='score' style='color:{{PR_DS_COLOR}}'>{{PR_DS_SCORE}}</td></tr>
+<tr>
+<td>Infrastructure Resilience <span class='qid'>(PR.IR)</span><div class='bar'><i style='width:{{PR_IR_PCT}};background:{{PR_IR_COLOR}}'></i></div></td>
+<td class='score' style='color:{{PR_IR_COLOR}}'>{{PR_IR_SCORE}}</td></tr>
+<tr>
+<td>Platform Security <span class='qid'>(PR.PS)</span><div class='bar'><i style='width:{{PR_PS_PCT}};background:{{PR_PS_COLOR}}'></i></div></td>
+<td class='score' style='color:{{PR_PS_COLOR}}'>{{PR_PS_SCORE}}</td></tr>
+<tr>
+<td rowspan='2'><b>DETECT</b><br><span class='pill' style='background:{{DETECT_COLOR}}'>{{DETECT_SCORE}}</span> <span class='qid'>{{DETECT_LABEL}}</span></td>
+<td>Adverse Event Analysis <span class='qid'>(DE.AE)</span><div class='bar'><i style='width:{{DE_AE_PCT}};background:{{DE_AE_COLOR}}'></i></div></td>
+<td class='score' style='color:{{DE_AE_COLOR}}'>{{DE_AE_SCORE}}</td></tr>
+<tr>
+<td>Continuous Monitoring <span class='qid'>(DE.CM)</span><div class='bar'><i style='width:{{DE_CM_PCT}};background:{{DE_CM_COLOR}}'></i></div></td>
+<td class='score' style='color:{{DE_CM_COLOR}}'>{{DE_CM_SCORE}}</td></tr>
+<tr>
+<td rowspan='4'><b>RESPOND</b><br><span class='pill' style='background:{{RESPOND_COLOR}}'>{{RESPOND_SCORE}}</span> <span class='qid'>{{RESPOND_LABEL}}</span></td>
+<td>Incident Analysis <span class='qid'>(RS.AN)</span><div class='bar'><i style='width:{{RS_AN_PCT}};background:{{RS_AN_COLOR}}'></i></div></td>
+<td class='score' style='color:{{RS_AN_COLOR}}'>{{RS_AN_SCORE}}</td></tr>
+<tr>
+<td>Reporting &amp; Communication <span class='qid'>(RS.CO)</span><div class='bar'><i style='width:{{RS_CO_PCT}};background:{{RS_CO_COLOR}}'></i></div></td>
+<td class='score' style='color:{{RS_CO_COLOR}}'>{{RS_CO_SCORE}}</td></tr>
+<tr>
+<td>Incident Management <span class='qid'>(RS.MA)</span><div class='bar'><i style='width:{{RS_MA_PCT}};background:{{RS_MA_COLOR}}'></i></div></td>
+<td class='score' style='color:{{RS_MA_COLOR}}'>{{RS_MA_SCORE}}</td></tr>
+<tr>
+<td>Incident Mitigation <span class='qid'>(RS.MI)</span><div class='bar'><i style='width:{{RS_MI_PCT}};background:{{RS_MI_COLOR}}'></i></div></td>
+<td class='score' style='color:{{RS_MI_COLOR}}'>{{RS_MI_SCORE}}</td></tr>
+<tr>
+<td rowspan='2'><b>RECOVER</b><br><span class='pill' style='background:{{RECOVER_COLOR}}'>{{RECOVER_SCORE}}</span> <span class='qid'>{{RECOVER_LABEL}}</span></td>
+<td>Recovery Communication <span class='qid'>(RC.CO)</span><div class='bar'><i style='width:{{RC_CO_PCT}};background:{{RC_CO_COLOR}}'></i></div></td>
+<td class='score' style='color:{{RC_CO_COLOR}}'>{{RC_CO_SCORE}}</td></tr>
+<tr>
+<td>Recovery Plan Execution <span class='qid'>(RC.RP)</span><div class='bar'><i style='width:{{RC_RP_PCT}};background:{{RC_RP_COLOR}}'></i></div></td>
+<td class='score' style='color:{{RC_RP_COLOR}}'>{{RC_RP_SCORE}}</td></tr>
+</table>
+<h2>Question detail</h2>
+<table><tr><th style='width:10%'>ID</th><th>Question area</th><th style='width:20%'>Score</th></tr>
+<tr><td class='qid'>GV-1<br>GV.OC</td><td>Mission-critical services &amp; obligations documented<!-- delete the next div if there is no note for GV-1 --><div class='note'>{{GV1_NOTE}}</div></td><td class='score' style='color:{{GV1_COLOR}}'>{{GV1_SCORE}}</td></tr>
+<tr><td class='qid'>GV-2<br>GV.RM</td><td>Risk strategy, appetite &amp; risk register<!-- delete the next div if there is no note for GV-2 --><div class='note'>{{GV2_NOTE}}</div></td><td class='score' style='color:{{GV2_COLOR}}'>{{GV2_SCORE}}</td></tr>
+<tr><td class='qid'>GV-3<br>GV.RR</td><td>Security roles assigned with authority<!-- delete the next div if there is no note for GV-3 --><div class='note'>{{GV3_NOTE}}</div></td><td class='score' style='color:{{GV3_COLOR}}'>{{GV3_SCORE}}</td></tr>
+<tr><td class='qid'>GV-4<br>GV.PO</td><td>Current, communicated, enforced policy set<!-- delete the next div if there is no note for GV-4 --><div class='note'>{{GV4_NOTE}}</div></td><td class='score' style='color:{{GV4_COLOR}}'>{{GV4_SCORE}}</td></tr>
+<tr><td class='qid'>GV-5<br>GV.OV</td><td>Leadership reviews security performance<!-- delete the next div if there is no note for GV-5 --><div class='note'>{{GV5_NOTE}}</div></td><td class='score' style='color:{{GV5_COLOR}}'>{{GV5_SCORE}}</td></tr>
+<tr><td class='qid'>GV-6<br>GV.SC</td><td>Suppliers identified and risk-assessed<!-- delete the next div if there is no note for GV-6 --><div class='note'>{{GV6_NOTE}}</div></td><td class='score' style='color:{{GV6_COLOR}}'>{{GV6_SCORE}}</td></tr>
+<tr><td class='qid'>GV-7<br>GV.SC</td><td>Security requirements in supplier contracts<!-- delete the next div if there is no note for GV-7 --><div class='note'>{{GV7_NOTE}}</div></td><td class='score' style='color:{{GV7_COLOR}}'>{{GV7_SCORE}}</td></tr>
+<tr><td class='qid'>ID-1<br>ID.AM</td><td>Hardware, software &amp; cloud inventory<!-- delete the next div if there is no note for ID-1 --><div class='note'>{{ID1_NOTE}}</div></td><td class='score' style='color:{{ID1_COLOR}}'>{{ID1_SCORE}}</td></tr>
+<tr><td class='qid'>ID-2<br>ID.AM</td><td>Data inventory, classification &amp; flows<!-- delete the next div if there is no note for ID-2 --><div class='note'>{{ID2_NOTE}}</div></td><td class='score' style='color:{{ID2_COLOR}}'>{{ID2_SCORE}}</td></tr>
+<tr><td class='qid'>ID-3<br>ID.RA</td><td>Vulnerability scanning &amp; threat intel<!-- delete the next div if there is no note for ID-3 --><div class='note'>{{ID3_NOTE}}</div></td><td class='score' style='color:{{ID3_COLOR}}'>{{ID3_SCORE}}</td></tr>
+<tr><td class='qid'>ID-4<br>ID.RA</td><td>Risks prioritized with documented response<!-- delete the next div if there is no note for ID-4 --><div class='note'>{{ID4_NOTE}}</div></td><td class='score' style='color:{{ID4_COLOR}}'>{{ID4_SCORE}}</td></tr>
+<tr><td class='qid'>ID-5<br>ID.IM</td><td>Lessons learned become tracked improvements<!-- delete the next div if there is no note for ID-5 --><div class='note'>{{ID5_NOTE}}</div></td><td class='score' style='color:{{ID5_COLOR}}'>{{ID5_SCORE}}</td></tr>
+<tr><td class='qid'>PR-1<br>PR.AA</td><td>Central identity management &amp; enforced MFA<!-- delete the next div if there is no note for PR-1 --><div class='note'>{{PR1_NOTE}}</div></td><td class='score' style='color:{{PR1_COLOR}}'>{{PR1_SCORE}}</td></tr>
+<tr><td class='qid'>PR-2<br>PR.AA</td><td>Least privilege &amp; privileged access control<!-- delete the next div if there is no note for PR-2 --><div class='note'>{{PR2_NOTE}}</div></td><td class='score' style='color:{{PR2_COLOR}}'>{{PR2_SCORE}}</td></tr>
+<tr><td class='qid'>PR-3<br>PR.AT</td><td>Awareness training incl. role-based<!-- delete the next div if there is no note for PR-3 --><div class='note'>{{PR3_NOTE}}</div></td><td class='score' style='color:{{PR3_COLOR}}'>{{PR3_SCORE}}</td></tr>
+<tr><td class='qid'>PR-4<br>PR.DS</td><td>Encryption at rest &amp; in transit<!-- delete the next div if there is no note for PR-4 --><div class='note'>{{PR4_NOTE}}</div></td><td class='score' style='color:{{PR4_COLOR}}'>{{PR4_SCORE}}</td></tr>
+<tr><td class='qid'>PR-5<br>PR.DS</td><td>Backups: protected, offline/immutable, tested<!-- delete the next div if there is no note for PR-5 --><div class='note'>{{PR5_NOTE}}</div></td><td class='score' style='color:{{PR5_COLOR}}'>{{PR5_SCORE}}</td></tr>
+<tr><td class='qid'>PR-6<br>PR.PS</td><td>Hardened configuration baselines<!-- delete the next div if there is no note for PR-6 --><div class='note'>{{PR6_NOTE}}</div></td><td class='score' style='color:{{PR6_COLOR}}'>{{PR6_SCORE}}</td></tr>
+<tr><td class='qid'>PR-7<br>PR.PS</td><td>Patching on defined timelines<!-- delete the next div if there is no note for PR-7 --><div class='note'>{{PR7_NOTE}}</div></td><td class='score' style='color:{{PR7_COLOR}}'>{{PR7_SCORE}}</td></tr>
+<tr><td class='qid'>PR-8<br>PR.IR</td><td>Network segmentation &amp; resilience<!-- delete the next div if there is no note for PR-8 --><div class='note'>{{PR8_NOTE}}</div></td><td class='score' style='color:{{PR8_COLOR}}'>{{PR8_SCORE}}</td></tr>
+<tr><td class='qid'>DE-1<br>DE.CM</td><td>Log collection &amp; retention across key sources<!-- delete the next div if there is no note for DE-1 --><div class='note'>{{DE1_NOTE}}</div></td><td class='score' style='color:{{DE1_COLOR}}'>{{DE1_SCORE}}</td></tr>
+<tr><td class='qid'>DE-2<br>DE.CM</td><td>Monitored alerting incl. after hours<!-- delete the next div if there is no note for DE-2 --><div class='note'>{{DE2_NOTE}}</div></td><td class='score' style='color:{{DE2_COLOR}}'>{{DE2_SCORE}}</td></tr>
+<tr><td class='qid'>DE-3<br>DE.AE</td><td>Defined alert triage &amp; correlation<!-- delete the next div if there is no note for DE-3 --><div class='note'>{{DE3_NOTE}}</div></td><td class='score' style='color:{{DE3_COLOR}}'>{{DE3_SCORE}}</td></tr>
+<tr><td class='qid'>DE-4<br>DE.AE</td><td>Incident declaration criteria<!-- delete the next div if there is no note for DE-4 --><div class='note'>{{DE4_NOTE}}</div></td><td class='score' style='color:{{DE4_COLOR}}'>{{DE4_SCORE}}</td></tr>
+<tr><td class='qid'>RS-1<br>RS.MA</td><td>IR plan: roles assigned, exercised yearly<!-- delete the next div if there is no note for RS-1 --><div class='note'>{{RS1_NOTE}}</div></td><td class='score' style='color:{{RS1_COLOR}}'>{{RS1_SCORE}}</td></tr>
+<tr><td class='qid'>RS-2<br>RS.MA</td><td>Categorization &amp; escalation paths<!-- delete the next div if there is no note for RS-2 --><div class='note'>{{RS2_NOTE}}</div></td><td class='score' style='color:{{RS2_COLOR}}'>{{RS2_SCORE}}</td></tr>
+<tr><td class='qid'>RS-3<br>RS.AN</td><td>Investigation &amp; evidence preservation<!-- delete the next div if there is no note for RS-3 --><div class='note'>{{RS3_NOTE}}</div></td><td class='score' style='color:{{RS3_COLOR}}'>{{RS3_SCORE}}</td></tr>
+<tr><td class='qid'>RS-4<br>RS.CO</td><td>Reporting obligations known &amp; built in<!-- delete the next div if there is no note for RS-4 --><div class='note'>{{RS4_NOTE}}</div></td><td class='score' style='color:{{RS4_COLOR}}'>{{RS4_SCORE}}</td></tr>
+<tr><td class='qid'>RS-5<br>RS.MI</td><td>Rapid containment &amp; full eradication<!-- delete the next div if there is no note for RS-5 --><div class='note'>{{RS5_NOTE}}</div></td><td class='score' style='color:{{RS5_COLOR}}'>{{RS5_SCORE}}</td></tr>
+<tr><td class='qid'>RC-1<br>RC.RP</td><td>Recovery procedures with RTOs, tested<!-- delete the next div if there is no note for RC-1 --><div class='note'>{{RC1_NOTE}}</div></td><td class='score' style='color:{{RC1_COLOR}}'>{{RC1_SCORE}}</td></tr>
+<tr><td class='qid'>RC-2<br>RC.RP</td><td>Integrity verification &amp; restore order<!-- delete the next div if there is no note for RC-2 --><div class='note'>{{RC2_NOTE}}</div></td><td class='score' style='color:{{RC2_COLOR}}'>{{RC2_SCORE}}</td></tr>
+<tr><td class='qid'>RC-3<br>RC.CO</td><td>Out-of-band status communication<!-- delete the next div if there is no note for RC-3 --><div class='note'>{{RC3_NOTE}}</div></td><td class='score' style='color:{{RC3_COLOR}}'>{{RC3_SCORE}}</td></tr>
+<tr><td class='qid'>RC-4<br>RC.CO</td><td>Coordinated public comms &amp; post-incident review<!-- delete the next div if there is no note for RC-4 --><div class='note'>{{RC4_NOTE}}</div></td><td class='score' style='color:{{RC4_COLOR}}'>{{RC4_SCORE}}</td></tr>
+</table>
+<h2>Strengths</h2>
+<!-- List every question scored 3 or 4, highest first. Copy the example <li> per item; if none, replace the whole card with:
+<p>No areas scored at Tier 3 or above yet — common for a first assessment. The priority actions below are the fastest way to change that.</p> -->
+<div class='card'><ul>
+<li><b>{{STRENGTH_TITLE}}</b> <span class='qid'>({{QID}}, scored {{SCORE}})</span></li>
+</ul></div>
+<h2>Recommended mitigations</h2>
+<!-- Everything scored 1 or 2 goes here. "Act now" = the six priority questions (ID-1, PR-1, PR-5, PR-7, DE-2, RS-1) when scored ≤2; "Plan next" = all other ≤2 questions. Sort each list by score ascending, then by ID. Mitigation text: condense that question's "If low" guidance from references/questions.md to 1–2 sentences. Delete a subsection if empty; if nothing scored ≤2 at all, replace both with:
+<p>Nothing scored at Tier 2 or below — focus on sustaining and measuring what you have, and on moving Tier 3 areas toward Adaptive.</p> -->
+<h3>Act now — highest-impact fundamentals</h3><ol class='mit'>
+<li><b>{{TITLE}}</b> <span class='qid'>({{QID}}, currently Tier {{SCORE}})</span><br>{{MITIGATION}}</li>
+</ol>
+<h3>Plan next — build the program</h3><ol class='mit'>
+<li><b>{{TITLE}}</b> <span class='qid'>({{QID}}, currently Tier {{SCORE}})</span><br>{{MITIGATION}}</li>
+</ol>
+<h2>Getting help</h2>
+<p>You do not have to close these gaps alone. Depending on who you are, the following no-cost or state-provided resources can help:</p>
+<!-- HELP BLOCK — keep only if the assessed sector is one of: wa-state-agency; otherwise delete this whole div. -->
+<div class='card helpblock'><h3 style='margin-top:0'>Washington state agencies — WaTech Office of Cybersecurity</h3><ul>
+<li>Report a cybersecurity incident: 360-407-8800 · SOC@watech.wa.gov (Security Operations Center / CIRT)</li>
+<li>Security design review for new or updated systems: sdr@watech.wa.gov</li>
+<li>Cybersecurity risk assessments: RiskManagement@watech.wa.gov</li>
+</ul></div>
+<!-- HELP BLOCK — keep only if the assessed sector is one of: local-gov,education,tribal,other; otherwise delete this whole div. -->
+<div class='card helpblock'><h3 style='margin-top:0'>Local governments, schools, tribes &amp; critical infrastructure — Washington Cybersecurity Incident Response Team (WA CIRT)</h3><ul>
+<li>A volunteer force of vetted cybersecurity professionals, operating under the Washington Military Department&#x27;s Emergency Worker Program, that assists local governments, school districts, tribes, public utilities, and critical infrastructure before, during, and after cyber incidents — at no cost.</li>
+<li>Learn more or request assistance: mil.wa.gov/cyber-security-program</li>
+</ul></div>
+<!-- HELP BLOCK — keep only if the assessed sector is one of: wa-state-agency,state-agency,local-gov,education,tribal,other; otherwise delete this whole div. -->
+<div class='card helpblock'><h3 style='margin-top:0'>Free national resources for government entities</h3><ul>
+<li>MS-ISAC — free membership for state, local, tribal &amp; territorial governments: advisories, Albert network monitoring, incident support (cisecurity.org/ms-isac)</li>
+<li>CISA Cyber Hygiene — free external vulnerability scanning and assessments (cisa.gov/cyber-hygiene-services)</li>
+<li>Report cybercrime: FBI IC3 (ic3.gov) · CISA incident reporting (cisa.gov/report)</li>
+</ul></div>
+<h2>Methodology</h2>
+<p>Thirty-three questions condensed from the 22 categories of NIST CSF 2.0, scored on the CSF implementation tiers (1 Partial, 2 Risk Informed, 3 Repeatable, 4 Adaptive). Category scores are the mean of their questions; function scores are the mean of their categories; the overall score is the mean of the six functions. Tier labels are floored, never rounded up. N/A answers are excluded from averages.</p>
+<footer>This self-assessment is a point-in-time snapshot based on self-reported answers; it is not an audit and does not certify compliance with any standard. Re-run it annually (or after major changes) and compare scores over time.</footer>
+</div></body></html>
